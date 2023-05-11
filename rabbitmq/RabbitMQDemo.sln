@@ -1,20 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01基本用法", "01基本用法", "{3D9A6465-6514-48BD-871C-16E38941F830}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03高级特性", "03高级特性", "{BA79E037-B5B1-44D0-BA3B-15F6702B58D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02主题发布订阅", "02主题发布订阅", "{51218ABE-5CCC-4C76-8166-F04325AAB1BD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferenceDll", "ReferenceDll", "{397261AC-FAF4-4313-B3D6-491841757167}"
-	ProjectSection(SolutionItems) = preProject
-		References\RabbitMQ.Client.dll = References\RabbitMQ.Client.dll
-		References\RabbitMQ.Client.xml = References\RabbitMQ.Client.xml
-		References\Readme.txt = References\Readme.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "01基本用法\Consumer\Consumer.csproj", "{66F2DB82-8BD7-4226-8746-9F13BC085DBB}"
 EndProject

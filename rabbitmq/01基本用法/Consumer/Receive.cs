@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System;
 using System.Configuration;
+using System.Text;
 
 namespace Consumer
 {
@@ -16,18 +13,18 @@ namespace Consumer
     {
         private static readonly string appID = ConfigurationManager.AppSettings["AppID"];
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var factory = new ConnectionFactory { Uri = ConfigurationManager.AppSettings["RabbitMQUri"] };
             using (var connection = factory.CreateConnection())
             {
                 using (var channel = connection.CreateModel())
                 {
-                    string queue = string.Format("MQ{0}.BaseStudy", appID);
+                    var queue = string.Format("MQ{0}.BaseStudy", appID);
 
-                    channel.QueueDeclare(queue, false, false, false, null);   //定义一个队列
+                    channel.QueueDeclare(queue, false, false, false, null); //定义一个队列
 
-                    Console.WriteLine("准备接收消息：");                    
+                    Console.WriteLine("准备接收消息：");
 
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (s, e) =>
@@ -36,11 +33,11 @@ namespace Consumer
                         var message = Encoding.UTF8.GetString(body);
                         Console.WriteLine("接收到的消息： {0}", message);
                     };
-                    channel.BasicConsume(queue, true, consumer);  //开启消费者与通道、队列关联
+                    channel.BasicConsume(queue, true, consumer); //开启消费者与通道、队列关联
 
                     Console.ReadLine();
                 }
-            }            
+            }
         }
     }
 }
