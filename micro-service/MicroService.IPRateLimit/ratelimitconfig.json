@@ -1,0 +1,42 @@
+{
+  //参考:https://github.com/stefanprodan/AspNetCoreRateLimit/blob/master/test/AspNetCoreRateLimit.Demo/appsettings.json
+  "IpRateLimiting": {
+    //例如设置了5次每分钟访问限流。当False时：项目中每个接口都加入计数，不管你访问哪个接口，只要在一分钟内累计够5次，将禁止访问。
+    //True：当一分钟请求了5次GetData接口，则该接口将在时间段内禁止访问，但是还可以访问PostData()5次,总得来说是每个接口都有5次在这一分钟，互不干扰。
+    "EnableEndpointRateLimiting": true,
+    "StackBlockedRequests": false,
+    //在RealIpHeader使用时，你的Kestrel 服务器背后是一个反向代理，如果你的代理服务器使用不同的页眉然后提取客户端IP X-Real-IP使用此选项来设置它。
+    "RealIpHeader": "X-Real-IP",
+    //将ClientIdHeader被用于提取白名单的客户端ID。如果此标头中存在客户端ID并且与ClientWhitelist中指定的值匹配，则不应用速率限制。
+    "ClientIdHeader": "X-ClientId",
+    //IP白名单:支持Ip v4和v6 
+    "IpWhitelist": [], // [ "::1/10", "192.168.0.0/24" ]
+    //端点白名单
+    "EndpointWhitelist": [], //["*:/api/WeatherForecast/one"]
+    //客户端白名单
+    "ClientWhitelist": [],
+    //限制状态码
+    "HttpStatusCode": 429,
+    "QuotaExceededResponse": {
+      "Content": "{{\"code\":429,\"msg\":\"访问过于频繁！Quota exceeded. Maximum allowed: {0} per {1}. Please try again in {2} second(s).\"}}",
+      "ContentType": "application/json",
+      "StatusCode": 429
+    },
+    //通用规则
+    "GeneralRules": [
+      {
+        //端点路径
+        "Endpoint": "*",
+        //时间段，格式：{数字}{单位}；可使用单位：s, m, h, d
+        "Period": "1s",
+        //限制次数
+        "Limit": 3
+      },
+      {
+        "Endpoint": "*",
+        "Period": "10m",
+        "Limit": 200
+      }
+    ]
+  }
+}

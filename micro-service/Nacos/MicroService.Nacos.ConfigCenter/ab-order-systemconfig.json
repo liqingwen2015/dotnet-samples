@@ -1,0 +1,20 @@
+{
+  "SystemApiConfig": [
+    {
+      "ApiCode": 1,
+      "ApiName": "Order",
+      "ApiBaseUrl": "http://192.168.0.1:3740/ESBProxy/esbproxy",
+      "ApiAddressCode": "f9dfsdafdsa19f770a86486eb1f48fa9538ce4b1",
+      "UserId": "superadmin",
+      "AuthCode": "440dsfafsda5ab6ccdfdsafd494412a6da01471ca57bd2"
+    },
+    {
+      "ApiCode": 2,
+      "ApiName": "Product",
+      "ApiBaseUrl": "http://192.168.0.2:3740/ESBProxy/esbproxy",
+      "ApiAddressCode": "c2f215ad344a4fdsfadsfdasff0f80fc03433640d2e2",
+      "UserId": "superadmin",
+      "AuthCode": "4215ab6cc232d494412a6da01471ca57bd2"
+    }
+  ]
+}
